@@ -1,9 +1,11 @@
 using Photon.Pun;
+using Photon.Realtime;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class PlayerController : MonoBehaviour
+using Hashtable = ExitGames.Client.Photon.Hashtable;
+public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 {
     [SerializeField] GameObject cameraHolder;
     [SerializeField] float mouseSensitivity, sprintSpeed, walkSpeed, jumpForce, smoothTime;
@@ -22,11 +24,18 @@ public class PlayerController : MonoBehaviour
 
     PhotonView PV;
 
+    const float maxHealth = 100f;
+    float currentHealth = maxHealth;
+
+    PlayerManager playerManager;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
 
         PV = GetComponent<PhotonView>();
+
+        playerManager = PhotonView.Find((int)PV.InstantiationData[0]).GetComponent<PlayerManager>();
     }
     private void Start()
     {
@@ -84,6 +93,15 @@ public class PlayerController : MonoBehaviour
           
         }
 
+        if (Input.GetMouseButtonDown(0))
+        {
+            items[itemIndex].Use();
+        }
+
+        if(transform.position.y < -10f)
+        {
+            Die();
+        }
     }
 
     private void FixedUpdate()
@@ -126,7 +144,22 @@ public class PlayerController : MonoBehaviour
             items[previousItemIndex].itemGameObject.SetActive(false);
         }
         previousItemIndex = itemIndex;
+
+        if (PV.IsMine) { 
+            Hashtable hash = new Hashtable();
+            hash.Add("itemIndex", itemIndex);
+            PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+        }
     }
+    // synchronize çalýþmasý için gerekli fonksiyon ve yukarýdaki if bloðu
+    public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
+    {
+        if (!PV.IsMine && targetPlayer == PV.Owner) {
+            EquipItem((int)changedProps["itemIndex"]);
+        }
+    }
+
+
     void Look()
     {
         transform.Rotate(Vector3.up * Input.GetAxisRaw("Mouse X") * mouseSensitivity);
@@ -140,5 +173,30 @@ public class PlayerController : MonoBehaviour
     public void SetGroundedState(bool _grounded)
     {
         grounded = _grounded;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        PV.RPC("RPC_TakeDamage", RpcTarget.All, damage);
+    }
+
+    [PunRPC]
+    void RPC_TakeDamage(float damage)
+    {
+        if (!PV.IsMine)
+        {
+            return;
+        }
+
+        currentHealth -= damage;
+
+        if (currentHealth <= 0) {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        playerManager.Die();
     }
 }

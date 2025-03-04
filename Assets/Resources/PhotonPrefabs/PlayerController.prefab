@@ -75,9 +75,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6365184756164133645}
-  - component: {fileID: 8199252221849742314}
+  - component: {fileID: 8995919361250842596}
+  - component: {fileID: 6559850202962820949}
   m_Layer: 0
-  m_Name: Gun2Item
+  m_Name: Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,7 +100,7 @@ Transform:
   - {fileID: 7616171687832840358}
   m_Father: {fileID: 7106914687698683345}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8199252221849742314
+--- !u!114 &8995919361250842596
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,11 +109,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 2900025155051099920}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5c19e9b0f2d8e748bf1d52c0c9fde30, type: 3}
+  m_Script: {fileID: 11500000, guid: 323cb688eb8f49a4a9e30a1c8f758b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemInfo: {fileID: 11400000, guid: 5129a6cebdf687b4997945e4691bcf16, type: 2}
   itemGameObject: {fileID: 6491379932928408625}
+  bulletImpactPrefab: {fileID: 4075315564479289610, guid: 30933cac8ef7ad74b9f67c064b1d4b83, type: 3}
+  cam: {fileID: 1200715573393175480}
+--- !u!114 &6559850202962820949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2900025155051099920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &4133352969194604287
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,7 +148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1057050934551924861}
   m_Layer: 0
-  m_Name: Gun1
+  m_Name: RifleObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -303,9 +328,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5567854225017386387}
-  - component: {fileID: 591061998247582450}
+  - component: {fileID: 1381863416729408266}
+  - component: {fileID: 786514327345050967}
   m_Layer: 0
-  m_Name: Gun1Item
+  m_Name: Rifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -327,7 +353,7 @@ Transform:
   - {fileID: 1057050934551924861}
   m_Father: {fileID: 7106914687698683345}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &591061998247582450
+--- !u!114 &1381863416729408266
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -336,11 +362,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 5993707964521013217}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5c19e9b0f2d8e748bf1d52c0c9fde30, type: 3}
+  m_Script: {fileID: 11500000, guid: 323cb688eb8f49a4a9e30a1c8f758b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemInfo: {fileID: 11400000, guid: 198588b5d5e24f34eb46316980b0cbb5, type: 2}
   itemGameObject: {fileID: 4133352969194604287}
+  bulletImpactPrefab: {fileID: 4075315564479289610, guid: 30933cac8ef7ad74b9f67c064b1d4b83, type: 3}
+  cam: {fileID: 1200715573393175480}
+--- !u!114 &786514327345050967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5993707964521013217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &6491379932928408625
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,7 +401,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7616171687832840358}
   m_Layer: 0
-  m_Name: Gun2
+  m_Name: PistolObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -467,6 +517,7 @@ GameObject:
   - component: {fileID: 2170650361934750108}
   - component: {fileID: 1200715573393175480}
   - component: {fileID: 3388147861058217914}
+  - component: {fileID: 7307539197113067940}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -548,6 +599,66 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7256365711572685111}
   m_Enabled: 0
+--- !u!114 &7307539197113067940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7256365711572685111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 0}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!1 &7402973478819524029
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,8 +768,8 @@ MonoBehaviour:
   jumpForce: 300
   smoothTime: 0.15
   items:
-  - {fileID: 591061998247582450}
-  - {fileID: 8199252221849742314}
+  - {fileID: 1381863416729408266}
+  - {fileID: 8995919361250842596}
 --- !u!136 &7092231892302816097
 CapsuleCollider:
   m_ObjectHideFlags: 0
